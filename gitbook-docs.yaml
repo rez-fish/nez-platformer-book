@@ -1,0 +1,20 @@
+# GitBook Site Git Sync configuration.
+# Maps this repository's documentation directories onto the site's navigation.
+# Schema: https://api.gitbook.com/gitbook-docs.yaml
+#
+# Only ./book/ is mapped: it is the sole directory holding documentation
+# (SUMMARY.md + chapter pages). code/ and solutions/ hold C# project source,
+# not docs; AI_NOTES.md and README.md are repo-level files, not book content.
+# They are intentionally not spaces — see deliverable notes.
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+version: 1
+site:
+  title: Nez Platformer Book
+  structure:
+    - type: space
+      key: space-book
+      title: Nez Platformer Book
+      path: book
+      default: true
+      content:
+        directory: ./book
