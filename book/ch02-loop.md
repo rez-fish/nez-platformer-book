@@ -112,6 +112,69 @@ Vector2 b = a;   // independent copy
 b.X = 99;        // a.X is still 1
 ```
 
+## Build the square
+
+The exercises below all modify this code, so build it first. Four pieces,
+all in `SpirefallGame`:
+
+**1. Fields** — the pixel texture, the position, and two `const`s:
+
+```csharp
+Texture2D _pixel;
+
+Vector2 _squarePos = new Vector2(100, 100);
+const float SquareSize = 32f;
+const float MoveSpeed = 240f; // pixels per second
+```
+
+(`_pixel` is `readonly`-eligible rather than `const` — a `Texture2D` can't
+exist at compile time. `SquareSize` and `MoveSpeed` are plain numbers, so
+`const` fits.)
+
+**2. Create the 1×1 texture in `Initialize`** (after `base.Initialize()` —
+the `GraphicsDevice` must exist first):
+
+```csharp
+_pixel = new Texture2D(GraphicsDevice, 1, 1);
+_pixel.SetData(new[] { Color.White });
+```
+
+**3. Move it in `Update`** (before `base.Update(gameTime)`), frame-rate
+independent and clamped to the window:
+
+```csharp
+var move = Vector2.Zero;
+if (Input.IsKeyDown(Keys.Left)) move.X -= 1;
+if (Input.IsKeyDown(Keys.Right)) move.X += 1;
+if (Input.IsKeyDown(Keys.Up)) move.Y -= 1;
+if (Input.IsKeyDown(Keys.Down)) move.Y += 1;
+
+// frame-rate independent: scale by seconds elapsed since last frame
+_squarePos += move * MoveSpeed * Time.DeltaTime;
+
+_squarePos.X = MathHelper.Clamp(_squarePos.X, 0, 1280 - SquareSize);
+_squarePos.Y = MathHelper.Clamp(_squarePos.Y, 0, 720 - SquareSize);
+```
+
+This needs `using Microsoft.Xna.Framework.Input;` for `Keys` — alongside
+the `Nez` using you already have.
+
+**4. Draw it in `Draw`** (after `base.Draw(gameTime)` renders the scene):
+
+```csharp
+var batcher = Graphics.Instance.Batcher;
+batcher.Begin();
+batcher.Draw(_pixel,
+    new Rectangle((int)_squarePos.X, (int)_squarePos.Y,
+                  (int)SquareSize, (int)SquareSize),
+    Color.OrangeRed);
+batcher.End();
+```
+
+Run it: `dotnet run` from `Spirefall/`. An orange-red square glides under
+the arrow keys and stops dead at the window edges. *Now* the exercises have
+something to modify.
+
 ## Exercises
 
 ### 1. Make the square yours

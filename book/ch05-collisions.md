@@ -168,8 +168,10 @@ grid. Then type `help` and skim the other commands.
 `Debug.Log` a message when the archer bonks its head (Y-collision while
 moving up).
 
-- *Nudge:* you already detect `hitY`; check the sign of `yDelta`.
-- *Bigger hint:* `if (hitY && yDelta < 0f) Debug.Log("bonk");`
+- *Nudge:* your Y-move already returns whether it hit something — check
+  the sign of the Y delta too.
+- *Bigger hint:* if the Y move hit *and* the delta was negative (moving
+  up), that's a head-bonk: `Debug.Log("bonk");`
 - *Near-solution:* one line — but it proves you can distinguish landing
   from head-bonking, which Chapter 6's wall logic will need.
 

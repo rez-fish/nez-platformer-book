@@ -162,6 +162,13 @@ at common sizes (16x16 tiles). Reza develops on Windows.
   param is the *collision* layer name, not the layer to draw (rendering is
   `SetLayerToRender`/`LayersToRender`). Also corrected ch07 prose that said
   the ctor "draws the named layer".
+- Exercise/prose audit 2026-10-06 (Reza spotted it on the live site): ch02's
+  exercises presupposed the full square code (`SquareSize`, `MoveSpeed`,
+  `_squarePos`, clamp lines) but the prose never built it — added a "Build
+  the square" guided section mirroring solutions/ch02. Audited all chapters
+  for the same pattern (exercises referencing never-built code): only other
+  instance was ch05 ex6's nudge presupposing `hitY`/`yDelta` variable names —
+  softened. Everything else is legitimate discover-the-API exercises.
 
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.
