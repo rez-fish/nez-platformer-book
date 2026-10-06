@@ -35,6 +35,35 @@ Each state extends `State<T>` and gets the full lifecycle:
 `SimpleStateMachine` (same namespace) is the lighter variant for when the
 full class-per-state machinery is overkill.
 
+```csharp
+// states are classes; the context (Enemy) is typed, not cast
+public class ChaseState : State<Enemy>
+{
+    public override void Begin()
+    {
+        _context.Speed = 90f;          // setup lives here, not at transition sites
+    }
+
+    public override void Reason()
+    {
+        // last chance to change state, every frame, before Update
+        if (!_context.CanSeePlayer())
+            _context.Fsm.ChangeState<PatrolState>();
+    }
+
+    public override void Update(float deltaTime)
+    {
+        _context.MoveTowardPlayer(deltaTime);
+
+        // free per-state timer — the book's _stateTimer, built in
+        if (_context.Fsm.ElapsedTimeInState > 5f)
+            _context.Fsm.ChangeState<PatrolState>(); // gave up
+    }
+
+    public override void End() { }
+}
+```
+
 **When to switch from the book's enum:** at three states, or the first
 time a state needs real setup/teardown. Two states with no enter/exit
 logic — the book's enum is fine, and simpler.

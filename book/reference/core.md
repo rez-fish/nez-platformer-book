@@ -42,6 +42,20 @@ to build content; the scene drives its entities every frame.
 | `Content` | `public NezContentManager Content` | ★★ | Scene-scoped content. Unloaded when the scene ends (unlike `Core`-level content). |
 | `DestroyAllEntities` | `void DestroyAllEntities()` | | Tear down everything — useful for instant rematch flows. |
 
+```csharp
+public override void Initialize()
+{
+    SetDesignResolution(320, 180, SceneResolutionPolicy.ShowAllPixelPerfect);
+    ClearColor = new Color(20, 12, 28);
+
+    var archer = CreateEntity("archer", new Vector2(40, 100));
+    archer.AddComponent(new PlayerController());
+
+    // camera follows from frame one
+    Camera.Position = archer.Position;
+}
+```
+
 ## `Nez.Entity`
 
 A thing in the scene: a `Position` and a bag of components. Does almost
@@ -68,6 +82,29 @@ nothing itself.
 | `SetUpdateOrder` | `Component SetUpdateOrder(int order)` | | Controls component update sequence within an entity. |
 | `Entity` | `public Entity Entity` | ★★★ | The owning entity. Null in the constructor. |
 
+```csharp
+public class PlayerController : Component, IUpdatable
+{
+    Mover _mover;
+
+    public override void OnAddedToEntity()
+    {
+        // Entity is valid here — cache neighbors once, not per frame.
+        _mover = Entity.GetComponent<Mover>();
+    }
+
+    void IUpdatable.Update()
+    {
+        // per-frame logic; Entity.Position, Entity.Scene, Entity.Tag available
+    }
+
+    public override void OnRemovedFromEntity()
+    {
+        // deregister virtual input, unsubscribe events
+    }
+}
+```
+
 ## `Nez.Transform`
 
 Every entity has one (`Entity.Transform`). `Entity.Position` is the
@@ -92,3 +129,19 @@ the screen.
 | `Bounds` | `public RectangleF Bounds` | | The world-space rect currently visible. Handy for culling and clamps. |
 | `WorldToScreenPoint` / `ScreenToWorldPoint` | `Vector2 ...(Vector2)` | ★ | Mouse picking, HUD anchoring. |
 | `MouseToWorldPoint()` | `Vector2 MouseToWorldPoint()` | | Aim-at-cursor in one call. |
+
+```csharp
+// smooth follow: snap on spawn, lerp every frame after
+Camera.Position = Vector2.Lerp(Camera.Position, target.Position, 1f - MathF.Pow(0.001f, Time.DeltaTime));
+
+// zoom-to-fit a versus arena, clamped to sane limits
+Camera.SetMinimumZoom(1f);
+Camera.SetMaximumZoom(3f);
+Camera.SetZoom(MathHelper.Clamp(180f / arenaWidth, 1f, 3f));
+
+// keep the camera inside the level
+var p = Camera.Position;
+var b = Camera.Bounds;
+p.X = MathHelper.Clamp(p.X, b.Width / 2, levelWidth - b.Width / 2);
+Camera.Position = p;
+```

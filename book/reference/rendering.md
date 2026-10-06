@@ -35,12 +35,53 @@ itself — no update code needed from you.
 `Sprite.SpritesFromAtlas(Texture2D, cellWidth, cellHeight)` slices a grid
 spritesheet into `Sprite[]` — the standard atlas workflow.
 
+```csharp
+// setup: slice, register, play
+var sprites = Sprite.SpritesFromAtlas(texture, 16, 16);
+_animator.AddAnimation("Idle", new[] { sprites[0], sprites[1] }, 6f);
+_animator.AddAnimation("Run", new[] { sprites[4], sprites[5], sprites[6], sprites[7] }, 10f);
+
+// per frame: only switch when the animation actually changes
+var next = moving ? "Run" : "Idle";
+if (!_animator.IsAnimationActive(next))
+    _animator.Play(next);
+
+// facing flip follows movement direction
+_animator.FlipX = velocity.X < 0;
+
+// chain: attack animation flows into recover without polling
+_animator.OnAnimationCompletedEvent += name =>
+{
+    if (name == "Attack") _animator.Play("Recover");
+};
+```
+
 ## `Nez.Tiled.TiledMapRenderer`
 
-| Member | ★ | Notes |
-|---|---|---|
-| `TiledMapRenderer(TiledMap map, string layerName)` | ★★ | Draws one tile layer. Add one component per layer you want visible. |
-| `TiledMapRenderer(TiledMap map)` | | Renders all layers. |
+Takes a `TmxMap` (loaded via `Content.LoadTiledMap("path/arena.tmx")`).
+The constructor's layer name is the **collision** layer — rendering
+defaults to all layers.
+
+| Member | Signature | ★ | Notes |
+|---|---|---|---|
+| ctor | `TiledMapRenderer(TmxMap map, string collisionLayerName = null, bool shouldCreateColliders = true)` | ★★ | Names the collision layer and (by default) auto-creates tile colliders from it. |
+| `SetLayerToRender` | `void SetLayerToRender(string layerName, char separator = '/')` | | Restrict *rendering* to one layer. Foreground/background split = two renderers. |
+| `SetLayersToRender` | `void SetLayersToRender(params string[] layerNames)` | | Multi-layer variant. |
+| `LayersToRender` | `public ITmxLayer[] LayersToRender` | | Null = render everything. Set directly if you prefer. |
+
+```csharp
+// scene setup: draw everything, collide against "Ground"
+var map = Content.LoadTiledMap("Content/Arena/arena.tmx");
+var tiles = CreateEntity("tiles");
+tiles.AddComponent(new TiledMapRenderer(map, "Ground"));
+player.AddComponent(new TiledMapMover(map.GetLayer<TmxLayer>("Ground")));
+
+// two-renderer parallax-ish split: background layers + foreground layer
+var back = CreateEntity("bg-tiles");
+back.AddComponent(new TiledMapRenderer(map)).SetLayersToRender("Sky", "Hills");
+var front = CreateEntity("fg-tiles");
+front.AddComponent(new TiledMapRenderer(map)).SetLayerToRender("Foreground");
+```
 
 Pair with `TiledMapMover` (physics page) for the collidable layer. Layer
 names are case-sensitive strings — consider `const string` fields once
@@ -57,6 +98,15 @@ implementation and write your own (the book does the latter).
 | `FollowLerp` | ★ | Smoothing factor. |
 | `Deadzone` | | Don't move the camera until the target leaves this box — steadier framing. |
 | `FocusOffset` | | Lookahead, built in. |
+
+```csharp
+// drop-in follow camera on its own entity
+var cam = CreateEntity("camera");
+var follow = new FollowCamera(playerEntity, Camera);
+follow.FollowLerp = 0.1f;
+follow.Deadzone = new RectangleF(0, 0, 40, 24); // steady framing near center
+cam.AddComponent(follow);
+```
 
 ## `Nez.SceneResolutionPolicy`
 

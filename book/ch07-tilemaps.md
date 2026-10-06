@@ -50,7 +50,10 @@ your code reads it. Level design becomes iteration, not programming.
 `Content.LoadTiledMap("Content/Arena/arena.tmx")` parses the map
 (`Scene.Content` is a `NezContentManager`, scoped to the scene). Then:
 
-- `new TiledMapRenderer(map, "Ground")` draws the named layer.
+- `new TiledMapRenderer(map, "Ground")` renders the map and names "Ground"
+  as its collision layer (auto-creating tile colliders by default).
+  `SetLayerToRender("name")` / `SetLayersToRender(...)` restrict *rendering*
+  to specific layers — the constructor's name is about collision, not drawing.
 - `new TiledMapMover(map.GetLayer<TmxLayer>("Ground"))` collides against
   it. It subclasses `Mover`, so `PlayerController`'s
   `GetComponent<Mover>()` keeps working with zero changes — polymorphism

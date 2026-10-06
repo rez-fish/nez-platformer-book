@@ -22,6 +22,19 @@ makes local multiplayer and remapping sane.
 
 All three key methods also take `Keys[]` for "any of these."
 
+```csharp
+// polling: held vs. edge-triggered
+float x = 0f;
+if (Input.IsKeyDown(Keys.Left)) x -= 1f;
+if (Input.IsKeyDown(Keys.Right)) x += 1f;
+if (Input.IsKeyPressed(Keys.Z)) TryJump();      // edge: fires once
+if (Input.IsKeyReleased(Keys.Z)) CutJumpShort(); // variable jump height
+
+// gamepad, guarded: pad 0 might not exist
+if (Input.GamePads[0].IsConnected && Input.GamePads[0].IsButtonPressed(Buttons.A))
+    TryJump();
+```
+
 ## `VirtualButton`
 
 One logical button, many physical sources. Reads `IsDown` (held),
@@ -44,6 +57,22 @@ _jump.AddGamePadButton(0, Buttons.A);
 | `BufferTime` (float field) | ★ | **Built-in input buffering.** Set to e.g. 0.12 and `IsPressed` stays true that long after the physical press — the book's jump buffer, for free. |
 | `ConsumeBuffer()` | | Clear a buffered press manually (used it? eat it). |
 | `Deregister()` | ★★ | Call in `OnRemovedFromEntity`. Virtual inputs self-update; deregistering is the cleanup. |
+
+```csharp
+// the free jump buffer: presses survive 0.12s, so early presses still count
+_jump = new VirtualButton(0.12f);
+_jump.AddKeyboardKey(Keys.Z);
+_jump.AddGamePadButton(0, Buttons.A);
+
+void IUpdatable.Update()
+{
+    if (_jump.IsPressed && _coyoteTimer > 0f)
+    {
+        DoJump();
+        _jump.ConsumeBuffer(); // used it — don't let it linger
+    }
+}
+```
 
 ## `VirtualIntegerAxis`
 

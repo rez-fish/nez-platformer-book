@@ -153,6 +153,15 @@ at common sizes (16x16 tiles). Reza develops on Windows.
   `FindEntitiesWithTag`. Extraction script regex-mangles some generic
   signatures — member *names* verified, complex generic signatures should be
   confirmed against source before trusting.
+- Reference examples 2026-10-06 (per Reza): added usage snippets to all 7
+  reference pages (verified against source: EaseType values, FollowCamera
+  ctor/deadzone types, Debug.DrawLine/Log signatures, State<T> lifecycle).
+  Fixed two invented/wrong entries found while writing them: `Storage` has
+  no Save/Load — only `GetStorageRoot()` (utils.md now shows the real
+  GetStorageRoot + System.Text.Json pattern); `TiledMapRenderer`'s 2nd ctor
+  param is the *collision* layer name, not the layer to draw (rendering is
+  `SetLayerToRender`/`LayersToRender`). Also corrected ch07 prose that said
+  the ctor "draws the named layer".
 
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.

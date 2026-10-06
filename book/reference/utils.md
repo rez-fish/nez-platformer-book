@@ -46,6 +46,19 @@ Core.Schedule(0.5f, true, this, t => Blink());           // repeating, with cont
 | `Core.Schedule` | `static ITimer Schedule(float seconds, Action<ITimer> onTime)` | ★ | Overloads add `repeats` and a `context` object. |
 | `ITimer.Stop()` / `ITimer.Reset()` | | | Cancel or restart. |
 
+```csharp
+// spawn protection: invulnerable for 2s, then the timer disposes itself
+_isInvulnerable = true;
+Core.Schedule(2f, t => _isInvulnerable = false);
+
+// repeating heartbeat with context (t.Context carries your object)
+Core.Schedule(0.5f, true, this, t => ((Enemy)t.Context).Blink());
+
+// keep the handle to cancel early (stagger interrupted by a hit)
+_hitstunTimer = Core.Schedule(0.4f, t => Recover());
+_hitstunTimer.Stop(); // hit again — restart instead of stacking
+```
+
 ## Tweens — `Nez.Tweens`
 
 LeanTween-port with a fluent API. Extension methods on `Entity` and
@@ -81,14 +94,42 @@ entity.TweenPositionTo(target, 0.3f).SetEaseType(EaseType.QuartOut).Start();
 | `Debug.RenderEnabled` | | Master switch for the debug draw layer. |
 | `Core.DebugRenderEnabled` | ★★ | The collider outlines (see Core page). |
 
-## `Nez.Utils.Storage` — save data
-
-The book ships without persistence; this is the missing piece:
-
 ```csharp
-Storage.Save("scores.json", new { High = 5 });
-var data = Storage.Load<ScoreData>("scores.json");
+// printf debugging with formatting
+Debug.Log("spawned enemy {0} at {1}", id, position);
+
+// see the AI's thinking: draw the sight line for one frame
+Debug.DrawLine(eyePosition, player.Position, Color.Red);
+
+// red outlines on every collider while tuning (Core page)
+Core.DebugRenderEnabled = true;
 ```
 
-Flat JSON in the platform's app-data folder. Scores, settings, unlocks —
-the last 5% of "shipped."
+## `Nez.Utils.Storage` — save data
+
+The book ships without persistence; this is the missing piece. `Storage`
+is deliberately tiny — one method that answers "where am I allowed to
+write?" You bring your own serialization (`System.Text.Json` is in the
+BCL):
+
+```csharp
+using System.IO;
+using System.Text.Json;
+
+var path = Path.Combine(Storage.GetStorageRoot(), "scores.json");
+
+// save
+Directory.CreateDirectory(Storage.GetStorageRoot());
+File.WriteAllText(path, JsonSerializer.Serialize(new { High = 5 }));
+
+// load (file may not exist on first run)
+int high = 0;
+if (File.Exists(path))
+    high = JsonSerializer.Deserialize<ScoreData>(File.ReadAllText(path)).High;
+```
+
+| Member | Signature | ★ | Notes |
+|---|---|---|---|
+| `GetStorageRoot` | `static string GetStorageRoot()` | ★ | Platform-correct save folder (`SavedGames/<exe>` on Windows). Create it before writing. |
+
+Scores, settings, unlocks — the last 5% of "shipped."

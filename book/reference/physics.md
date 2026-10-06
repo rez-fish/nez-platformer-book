@@ -26,6 +26,21 @@ Related movers: `TiledMapMover` (collides against a tilemap layer — *is* a
 `Mover`, so `GetComponent<Mover>()` keeps working), `ProjectileMover`
 (straight-line projectiles), `ArcadeRigidbody` (velocity-based alternative).
 
+```csharp
+// the standard pattern: axis-separated moves, corners slide
+var motion = velocity * Time.DeltaTime;
+_mover.Move(new Vector2(motion.X, 0), out _);
+_mover.Move(new Vector2(0, motion.Y), out var hit);
+
+// the split pair: decide in between (one-way platforms)
+var m = velocity * Time.DeltaTime;
+if (_mover.CalculateMovement(ref m, out var result) && ShouldIgnore(result))
+    m = Vector2.Zero;   // or: keep X, drop Y — your call
+_mover.ApplyMovement(m);
+if (result.Collider != null)
+    OnLanded(result.Normal);   // Normal tells you floor vs. wall
+```
+
 ## Colliders
 
 A collider is a shape component — data the physics system queries.
@@ -59,6 +74,24 @@ Static-style queries against the spatial hash. The public surface for
 `Fraction`. `CollisionResult` (from `Mover.Move`) carries `Collider`,
 `Normal`, `MinimumTranslationVector`, `Point` — the `Normal` is what
 chapter 6 reads for wall detection.
+
+```csharp
+// line of sight: "can the enemy see the player?"
+var hit = Physics.Linecast(eyePosition, player.Position);
+bool canSee = hit.Collider == null || hit.Collider.Entity == playerEntity;
+
+// pickup query: "did I touch anything edible?"
+var box = new RectangleF(Entity.Position - new Vector2(8), new Vector2(16, 16));
+var other = Physics.OverlapRectangle(box);
+if (other != null && other.Entity.GetComponent<Pickup>() != null)
+    other.Entity.Destroy();
+
+// explosion: everyone in radius takes the query, decides for itself
+var hits = new Collider[16];
+int count = Physics.OverlapCircleAll(Entity.Position, 48f, hits);
+for (int i = 0; i < count; i++)
+    hits[i].Entity.GetComponent<Health>()?.Damage(1);
+```
 
 {% hint style="info" %}
 **Collide broadly, identify narrowly.** The standard Nez hit-resolution
