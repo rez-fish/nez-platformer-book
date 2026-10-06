@@ -1,0 +1,21 @@
+bin/
+obj/
+.vs/
+.vscode/
+*.user
+*.suo
+TestResults/
+artifacts/
+
+# Nez / FNA build outputs
+*.dll
+*.pdb
+*.exe
+!**/Content/**
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp clones used for source verification
+/tmp/

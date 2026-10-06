@@ -1,0 +1,10 @@
+# GitBook Git Sync configuration.
+# Tells GitBook that the book lives in ./book/, with book/SUMMARY.md as the
+# table of contents and book/intro.md as the landing page. The rest of the
+# repo (code/, solutions/, AI_NOTES.md) is ignored by GitBook but stays
+# versioned alongside the book, per the project's "one living repo" rule.
+root: ./book/
+
+structure:
+  readme: intro.md
+  summary: SUMMARY.md
