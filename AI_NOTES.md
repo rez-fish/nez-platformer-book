@@ -130,6 +130,19 @@ at common sizes (16x16 tiles). Reza develops on Windows.
   (was a stale skeleton placeholder). All assets are text (SVG) so they
   push via push_files. Theme colors/fonts/logo are GitBook UI settings,
   not repo-controlled — checklist given to Reza.
+- Full read-through review 2026-10-06 (per Reza): read all 14 chapters as
+  a student + audited Nez FAQs/Samples, FNA docs, BYTEPATH. Fixed:
+  fnalibs verified (SDL3.dll/FNA3D.dll/FAudio.dll/libtheorafile.dll from
+  fnalibs-dailies win-x64 — dropped [unverified], was "SDL2"); ch07 figure
+  re-rendered from ch07's 20x11 map (was ch14's 40x11); 3 hint blocks moved
+  out of bullet lists (GitBook can't render hints as list items);
+  ch09 Next no longer says "content pipeline" (ch10 is pipeline-free);
+  scope boundary (local-only multiplayer) stated in intro, ch14 references
+  it; `Assembly.GetEntryAssembly()?.GetName().Version` fix. Open items from
+  the review (not yet done): nothing compiled — the build-verification pass
+  on Reza's Windows machine is still the highest-value next step; see the
+  review's tweak list for structural candidates (coroutines chapter, sprite
+  animation, VirtualInput earlier, save/settings, coding-practices essay).
 
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.
