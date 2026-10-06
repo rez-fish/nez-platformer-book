@@ -27,4 +27,17 @@ XNA/FNA concepts are explained on first appearance.
 
 ## Status
 
-Skeleton created. No chapters written yet — awaiting outline feedback.
+All 14 chapters written (2026-10-05). The book builds a complete local-versus
+arena platformer ("Spirefall") with Nez on FNA.
+
+## Binary placeholders
+
+The `.wav` sound effects and `tiles.png` tilesets in `/solutions` and
+`/code` are generated placeholders (sine/noise bleeps, procedural tiles).
+Regenerate them any time from the repo root:
+
+```
+python3 code/tools/generate_placeholders.py
+```
+
+Replace them with real assets as described in Chapters 7 and 10.
