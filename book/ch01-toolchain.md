@@ -1,5 +1,5 @@
 ---
-description: Install the .NET SDK, gather the FNA natives, reference pinned Nez/FNA sources, and open your first window.
+description: "Install the .NET SDK, gather the FNA natives, reference pinned Nez/FNA sources, and open your first window."
 ---
 
 # Chapter 1: Toolchain and first window

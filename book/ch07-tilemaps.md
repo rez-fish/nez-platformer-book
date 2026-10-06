@@ -1,5 +1,5 @@
 ---
-description: Real levels: build the arena in the Tiled editor and load it with Nez's Tiled pipeline.
+description: "Real levels: build the arena in the Tiled editor and load it with Nez's Tiled pipeline."
 ---
 
 # Chapter 7: Real levels — tilemaps with Tiled

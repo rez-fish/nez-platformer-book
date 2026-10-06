@@ -1,5 +1,5 @@
 ---
-description: Acceleration, variable jump height, coyote time, and jump buffering — the forgiveness trio.
+description: "Acceleration, variable jump height, coyote time, and jump buffering — the forgiveness trio."
 ---
 
 # Chapter 4: Game-feel movement — the ground game

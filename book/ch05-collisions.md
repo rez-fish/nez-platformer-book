@@ -1,5 +1,5 @@
 ---
-description: Colliders, the spatial hash, and Nez's Mover: solid platforms with clean corner slides.
+description: "Colliders, the spatial hash, and Nez's Mover: solid platforms with clean corner slides."
 ---
 
 # Chapter 5: Collisions — colliders, the Mover, and the spatial hash

@@ -1,5 +1,5 @@
 ---
-description: Nez's Scene/Entity/Component model and crisp pixel-perfect rendering on a 320x180 stage.
+description: "Nez's Scene/Entity/Component model and crisp pixel-perfect rendering on a 320x180 stage."
 ---
 
 # Chapter 3: Scene, Entity, Component, and pixel-perfect rendering

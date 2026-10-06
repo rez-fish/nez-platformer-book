@@ -1,5 +1,5 @@
 ---
-description: Wall slide, wall jump, and an 8-way dash on a tiny state machine.
+description: "Wall slide, wall jump, and an 8-way dash on a tiny state machine."
 ---
 
 # Chapter 6: The full moveset — wall slide, wall jump, dash

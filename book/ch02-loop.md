@@ -1,5 +1,5 @@
 ---
-description: The XNA game loop, frame-rate independence, and the C# type system through a moving square.
+description: "The XNA game loop, frame-rate independence, and the C# type system through a moving square."
 ---
 
 # Chapter 2: C#, the game loop, and a moving square
