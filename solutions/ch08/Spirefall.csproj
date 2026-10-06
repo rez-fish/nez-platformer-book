@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Spirefall</RootNamespace>
+    <AssemblyName>Spirefall</AssemblyName>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <!-- Nez and FNA are referenced as pinned source checkouts in sibling folders.
+       Nez.FNA.Core already references FNA.Core; the direct FNA reference is
+       explicit so the pairing is visible. See /AI_NOTES.md for pinned commits. -->
+  <ItemGroup>
+    <ProjectReference Include="..\FNA\FNA.Core.csproj" />
+    <ProjectReference Include="..\Nez\Nez.Portable\Nez.FNA.Core.csproj" />
+  </ItemGroup>
+
+  <!-- Everything under Content/ (tilemaps, tilesets, audio, …) is copied next
+       to the built exe, preserving folders. Nez loads it via Content.Load*. -->
+  <ItemGroup>
+    <Content Include="Content\**\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
