@@ -1,3 +1,7 @@
+---
+description: Publish for Windows, package the FNA natives, write the player README, ship it.
+---
+
 # Chapter 14: Ship it — publishing for Windows
 
 > Build status: **[unverified]** — packaging steps follow the standard .NET
@@ -112,8 +116,9 @@ Delete `SDL2.dll` from a *copy* of the publish folder and run. Read the
 exception.
 
 - *Nudge:* `DllNotFoundException: Unable to load DLL 'SDL2'`.
-- *Bigger hint:* this is the #1 "it works on my machine" failure for FNA
-  games — now you recognize it on sight.
+- *Bigger hint:* {% hint style="warning" %}
+**The #1 FNA shipping failure:** A missing native DLL (`DllNotFoundException`, often `SDL2`) is the #1 "it works on my machine" failure for FNA games — now you recognize it on sight.
+{% endhint %}
 - *Near-solution:* restore the DLL. Checklists beat memory: natives are
   a line on yours now.
 

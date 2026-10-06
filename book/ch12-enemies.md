@@ -1,3 +1,7 @@
+---
+description: Patrol and chase enemy AI with line-of-sight, plus death and respawn.
+---
+
 # Chapter 12: Enemies — AI with state machines and line of sight
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -18,7 +22,10 @@ hittable), `ArenaScene.cs` (spawns, death/respawn), `Sfx.cs` + `death.wav`.
 ### AI as sense → think → act
 
 The enemy's `Update` is three labeled phases — a structure worth stealing
+
 for every AI you write:
+
+![Enemy AI as sense-think-act: linecast, choose Patrol or Chase, move with the Mover.](assets/ai-pipeline.svg)
 
 1. **Sense**: where's the player? `Physics.Linecast(eyes, playerPos)`
    answers "is the line of sight clear?" — `hit.Collider == null` means
@@ -120,8 +127,9 @@ Replace the `seen` computation with `seen = dist < AggroRange`. Lure an
 enemy to the far side of a wall.
 
 - *Nudge:* it chases through the wall, hopping forever.
-- *Bigger hint:* the linecast is what makes the AI feel *fair* — it can
-  only want what it can see.
+{% hint style="info" %}
+**Fair AI:** The linecast is what makes the AI feel *fair* — it can only want what it can see. Sensing separates AI from homing missiles.
+{% endhint %}
 - *Near-solution:* revert. Sensing is what separates AI from homing
   missiles.
 

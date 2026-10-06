@@ -1,3 +1,7 @@
+---
+description: Local versus: keyboard vs gamepad, owned arrows, first to 5 wins.
+---
+
 # Chapter 13: Local multiplayer — versus
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -50,8 +54,9 @@ if (player != null && player.PlayerIndex != _ownerIndex && player.IsVulnerable)
     arena.OnPlayerHit(_ownerIndex, player);
 ```
 
-Three conditions, each load-bearing: it's a player, it's not *me*, and
-it's not spawn-protected. Remove the middle one (Exercise 4) and the game
+{% hint style="info" %}
+**Owned hits:** An arrow scores only when three conditions hold: it's a player, it's not *me*, and it's not spawn-protected. Remove the middle one and the game becomes unplayable — ownership isn't politeness, it's design.
+{% endhint %} Remove the middle one (Exercise 4) and the game
 becomes unplayable — which is exactly why the check exists.
 
 ### The versus loop
