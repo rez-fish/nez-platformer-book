@@ -1,3 +1,7 @@
+---
+description: The XNA game loop, frame-rate independence, and the C# type system through a moving square.
+---
+
 # Chapter 2: C#, the game loop, and a moving square
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40` and FNA @
@@ -27,12 +31,16 @@ One Nez-specific fact, straight from `Core`'s constructor source: Nez sets
 turns it off, so frames take however long they take. That is why movement
 is scaled by **`Time.DeltaTime`** — a static *field* (not a property)
 holding the seconds elapsed since the previous frame. `pos += vel * dt`
-makes speed mean "pixels per second" on any hardware. Forget the `* dt`
-and your game runs at the monitor's refresh rate — 2.4× too fast on a
-144 Hz display.
+makes speed mean "pixels per second" on any hardware. {% hint style="warning" %}
+**Frame-rate independence is mandatory:** Forget the `* dt` and your game runs at the monitor's refresh rate — 2.4x too fast on a 144 Hz display. Nez's variable timestep makes this a requirement, not a nicety.
+{% endhint %}
 
 `GameTime` (the parameter) carries the same timing plus total elapsed time;
+
 we mostly ignore it and use `Time.DeltaTime`.
+
+![The XNA game loop: Initialize once, then Update and Draw every frame.](assets/loop.svg)
+
 
 ### C# for the TypeScript/Go engineer, part 1
 
@@ -47,8 +55,9 @@ p.X += 1;                    // mutates the copy. The entity never moves.
 
 Go has the same value semantics for structs, so this should feel familiar —
 but C# *properties* make it sneaky: `Entity.Position` looks like a field and
-behaves like a method call returning a copy. Rule of thumb: read a struct
-property into a local, mutate the local, assign it back.
+behaves like a method call returning a copy. {% hint style="warning" %}
+**The struct-copy gotcha:** `Entity.Position` looks like a field but returns a *copy* — mutating the copy moves nothing. Rule of thumb: read a struct property into a local, mutate the local, assign it back.
+{% endhint %}
 
 **Fields vs properties.** `Time.DeltaTime` is a `public static float` field;
 `Entity.Position` is a property with a getter and setter. You cannot tell

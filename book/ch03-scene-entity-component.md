@@ -1,3 +1,7 @@
+---
+description: Nez's Scene/Entity/Component model and crisp pixel-perfect rendering on a 320x180 stage.
+---
+
 # Chapter 3: Scene, Entity, Component, and pixel-perfect rendering
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -32,9 +36,14 @@ Chapter 1 shape, except it now assigns `Scene = new ArenaScene()`. New files:
   - `OnAddedToEntity()` runs when the component joins an entity — cache
     references here, never in the constructor (the `Entity` property isn't
     set yet in the constructor).
-  - A component's `Update()` runs each frame **only if the component
-    implements `IUpdatable`** — `class Player : Component, IUpdatable`,
-    with `void IUpdatable.Update()`. This surprises everyone once.
+  - `Update()` runs each frame only for components implementing
+    `IUpdatable`.
+
+{% hint style="warning" %}
+**Update needs IUpdatable:** A component's `Update()` runs each frame **only if the component implements `IUpdatable`** — `class Player : Component, IUpdatable` with `void IUpdatable.Update()`. This surprises everyone once.
+{% endhint %}
+
+![Scene/Entity/Component hierarchy: a Scene holds Entities, each a bag of Components.](assets/ec-hierarchy.svg)
 
 ### Pixel-perfect rendering
 

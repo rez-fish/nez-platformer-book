@@ -1,3 +1,7 @@
+---
+description: Title, pause, and scene flow, plus UI with Gum's FNA runtime.
+---
+
 # Chapter 9: Game flow and UI with Gum
 
 > Build status: **[unverified]** — Nez APIs verified against source; Gum
@@ -45,16 +49,17 @@ GumService.Default.Initialize(this, Gum.Forms.DefaultVisualsVersion.Newest);
 // SpirefallGame.Draw:   GumService.Default.Draw();            (after base.Draw)
 ```
 
-`GumService` lives in namespace `Gum` (it moved there in mid-2026 — older
-docs and AI-generated snippets still say `MonoGameGum`; they're stale).
+{% hint style="warning" %}
+**Stale Gum docs:** `GumService` lives in namespace `Gum` — it moved there in mid-2026. Older docs and AI-generated snippets still say `MonoGameGum`; they're stale.
+{% endhint %}
 The FNA runtime ships as the **`Gum.FNA`** NuGet package (2026.10.1.1
 confirmed on nuget.org; Gum source pinned @ `dbb35814` for API reference).
 
 UI elements (`TextRuntime`, `RectangleRuntime`, …) are created in code
 and attached with the instance methods `AddToRoot()` / `RemoveFromRoot()`.
-Because Gum doesn't know about scenes, **every scene that creates elements
-must remove them when it exits** — orphans from the title screen will
-haunt the arena.
+{% hint style="warning" %}
+**Gum elements outlive scenes:** Because Gum doesn't know about scenes, **every scene that creates elements must remove them when it exits** — orphans from the title screen will haunt the arena.
+{% endhint %}
 
 ### Pausing with TimeScale
 

@@ -1,3 +1,7 @@
+---
+description: A following camera with lookahead, trauma-based screenshake, and dust particles.
+---
+
 # Chapter 8: Juice — camera, screenshake, particles
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -51,9 +55,9 @@ duration. Our dust is a *one-shot*: `playOnAwake: false`, `Duration`
 to the feet on each landing — cheaper than spawning entities per puff.
 
 Two gotchas, both found in source, not docs: `Angle`'s units are
-[unverified] (assumed degrees here — tune by eye), and the blend fields
-default to `0`, which is *not* a valid XNA `Blend` — set
-`SourceAlpha`/`InverseSourceAlpha` explicitly or nothing renders.
+[unverified] (assumed degrees here — tune by eye), and {% hint style="danger" %}
+**Set your blend modes:** The particle config's blend fields default to `0`, which is *not* a valid XNA `Blend`. Set `SourceAlpha`/`InverseSourceAlpha` explicitly — or nothing renders, with no error.
+{% endhint %}
 
 ### Wiring without coupling
 

@@ -1,3 +1,7 @@
+---
+description: Wall slide, wall jump, and an 8-way dash on a tiny state machine.
+---
+
 # Chapter 6: The full moveset — wall slide, wall jump, dash
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -24,11 +28,14 @@ enum MoveState { Normal, Dashing }
 ```
 
 `Normal` runs the Chapter 5 logic; `Dashing` runs a fixed-velocity move
-with no gravity and no input, then returns. The early `return` after the
-dash branch is load-bearing: it guarantees the two states never
-half-execute in the same frame. When the moveset grows (Chapter 12's
+with no gravity and no input, then returns. {% hint style="info" %}
+**State machine structure:** The early `return` after the dash branch is load-bearing: it guarantees the two states never half-execute in the same frame. One enum, one branch per state, transitions only at the edges.
+{% endhint %} When the moveset grows (Chapter 12's
+
 enemies use the same pattern), the shape scales: one enum, one branch
 each, transitions only at the edges.
+
+![The movement state machine: Normal and Dashing with their transitions.](assets/state-machine.svg)
 
 Timers drive the transitions: `_stateTimer` counts the dash down,
 `_dashCooldown` gates the next one. Landing resets the cooldown —

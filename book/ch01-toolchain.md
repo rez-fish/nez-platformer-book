@@ -1,3 +1,7 @@
+---
+description: Install the .NET SDK, gather the FNA natives, reference pinned Nez/FNA sources, and open your first window.
+---
+
 # Chapter 1: Toolchain and first window
 
 > Build status: **[unverified]** — every snippet, project file, and build step
@@ -241,13 +245,9 @@ Read the exception message, then revert.
 
 ### 7. Native libs: make FNA find SDL
 
-`dotnet run` may fail with a `DllNotFoundException` (often `SDL2`): FNA's
-managed code P/Invokes into native libraries that must sit next to your
-`.exe`. Download the Windows x64 **fnalibs** archive (see the FNA docs,
-"Setting Up FNA"), and copy the DLLs next to the built exe
-(`Spirefall\bin\Debug\net8.0\`). Re-run: the window opens. [unverified:
-exact archive name and DLL list — confirm against the FNA docs page at the
-time you do this.]
+{% hint style="warning" %}
+**Missing natives:** `dotnet run` may fail with a `DllNotFoundException` (often `SDL2`): FNA's managed code P/Invokes into native libraries that must sit next to your `.exe`. Download the Windows x64 **fnalibs** archive (see the FNA docs, "Setting Up FNA"), and copy the DLLs next to the built exe. [unverified: exact archive name and DLL list — confirm against the FNA docs page at the time you do this.]
+{% endhint %}
 
 - *Nudge:* the exception message names the missing DLL. That name is your
   search query.

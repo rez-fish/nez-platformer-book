@@ -1,3 +1,7 @@
+---
+description: Acceleration, variable jump height, coyote time, and jump buffering — the forgiveness trio.
+---
+
 # Chapter 4: Game-feel movement — the ground game
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -57,8 +61,9 @@ forgiveness"):
    remembered and fires on touchdown. Landing and jumping become one
    motion instead of two precisely-timed ones.
 
-All three are timers and edge detection — no physics involved. They are
-the cheapest, highest-impact game-feel work you will ever do.
+{% hint style="success" %}
+**The forgiveness trio:** Coyote time, jump buffering, and variable jump height are all timers and edge detection — no physics involved. They are the cheapest, highest-impact game-feel work you will ever do.
+{% endhint %}
 
 ### Explicit interface implementation
 

@@ -1,3 +1,7 @@
+---
+description: Real levels: build the arena in the Tiled editor and load it with Nez's Tiled pipeline.
+---
+
 # Chapter 7: Real levels — tilemaps with Tiled
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -25,7 +29,10 @@ Hand-placing platform entities works for a test room and collapses for a
 level: hundreds of entities, no visual overview, every tweak a recompile.
 A tilemap separates *authorship* (paint tiles in an editor) from *runtime*
 (Nez renders the layer and collides against it). The `.tmx` file is data;
+
 your code reads it. Level design becomes iteration, not programming.
+
+![The actual arena tilemap (40x11), rendered from the solution's arena.tmx.](assets/arena-overview.svg)
 
 ### Tiled's model
 
@@ -52,8 +59,9 @@ your code reads it. Level design becomes iteration, not programming.
 
 The `.tmx` references `tiles.tsx`, which references `tiles.png`, all by
 relative path. The csproj's `Content/**` copy rule puts the whole folder
-next to the exe so those relative paths resolve at runtime. If the map
-loads but tiles render as nothing, the image path is the first suspect.
+next to the exe so those relative paths resolve at runtime. {% hint style="warning" %}
+**Invisible tiles:** If the map loads but tiles render as nothing, the image path is the first suspect — the `.tmx` references the `.tsx`, which references the `.png`, all by relative path.
+{% endhint %}
 
 ## Minimal snippets
 

@@ -1,3 +1,7 @@
+---
+description: Sound effects without a content pipeline, plus music.
+---
+
 # Chapter 10: Sound — effects and music
 
 > Build status: **[unverified]** — XNA audio APIs are stable and standard;
@@ -34,8 +38,9 @@ XNA's `Content.Load<SoundEffect>` wants compiled `.xnb` files (built by
 the content pipeline). FNA games often skip the pipeline: `SoundEffect.
 FromStream` loads a plain `.wav` at runtime, and `TitleContainer.
 OpenStream` resolves the path relative to the exe folder — where our
-csproj's `Content/**` rule already puts the files. Edit a wav, re-run,
-hear the change. No build step, no pipeline tool on the path.
+csproj's `Content/**` rule already puts the files. {% hint style="success" %}
+**No content pipeline:** Sounds are plain `.wav` files loaded with `SoundEffect.FromStream` — edit a wav, re-run, hear the change. No build step, no pipeline tool on the path.
+{% endhint %}
 
 For music, `Song.FromUri(name, uri)` plays `.ogg`/`.mp3` the same way
 ([unverified] exact format support — confirm against FNA docs; Exercise 5).

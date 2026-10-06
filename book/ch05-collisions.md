@@ -1,3 +1,7 @@
+---
+description: Colliders, the spatial hash, and Nez's Mover: solid platforms with clean corner slides.
+---
+
 # Chapter 5: Collisions — colliders, the Mover, and the spatial hash
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
@@ -45,10 +49,12 @@ whether anything was hit.
 
 We move **X first, then Y**, as two separate calls. Why: a diagonal move
 that clips a platform corner has an ambiguous resolution — push out
-horizontally or vertically? Separated axes make each resolution
-unambiguous, which is what gives platformers their clean corner slides
-instead of getting hung up. This is the same technique in Deepnight's
+horizontally or vertically? {% hint style="info" %}
+**Why axis separation:** A diagonal move that clips a platform corner has an ambiguous resolution — push out horizontally or vertically? Separated axes make each resolution unambiguous, which is what gives platformers clean corner slides instead of getting hung up.
+{% endhint %} This is the same technique in Deepnight's
 platformer tutorial, expressed through Nez's API.
+
+![Axis-separated movement: X first, then Y, so corners slide instead of snagging.](assets/axis-separation.svg)
 
 `CollisionResult` (a struct) carries `Collider`, `Normal`,
 `MinimumTranslationVector`, `Point`. This chapter only needs the bool; the
