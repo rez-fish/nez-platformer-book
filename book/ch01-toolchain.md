@@ -31,7 +31,7 @@ in the book will play on.
   Think of it as the portable "operating system" for the game: it owns the
   window, the graphics device, input, audio, and the `Game` base class with
   its `Initialize`/`Update`/`Draw` lifecycle. FNA is managed C#, but it
-  calls into **native libraries** (SDL2 and friends) at runtime — on Windows
+  calls into **native libraries** (SDL3 and friends) at runtime — on Windows
   these ship as DLLs that must sit next to your built `.exe`. The FNA
   project publishes them as the "fnalibs" archives.
 - **Nez** is a 2D framework built on top of FNA (or MonoGame). Its root is
@@ -246,7 +246,7 @@ Read the exception message, then revert.
 ### 7. Native libs: make FNA find SDL
 
 {% hint style="warning" %}
-**Missing natives:** `dotnet run` may fail with a `DllNotFoundException` (often `SDL2`): FNA's managed code P/Invokes into native libraries that must sit next to your `.exe`. Download the Windows x64 **fnalibs** archive (see the FNA docs, "Setting Up FNA"), and copy the DLLs next to the built exe. [unverified: exact archive name and DLL list — confirm against the FNA docs page at the time you do this.]
+**Missing natives:** `dotnet run` may fail with a `DllNotFoundException` (often `SDL3`): FNA's managed code P/Invokes into native libraries that must sit next to your `.exe`. Download the Windows x64 **fnalibs** archive — it's published as GitHub Actions artifacts on `FNA-XNA/fnalibs-dailies`, not a static link — and copy the DLLs from its `win-x64` folder next to the built exe: `SDL3.dll` (windowing/input), `FNA3D.dll` (graphics), `FAudio.dll` (audio), `libtheorafile.dll` (video). Note: the dailies track FNA master, so re-download if yours are months old.
 {% endhint %}
 
 - *Nudge:* the exception message names the missing DLL. That name is your

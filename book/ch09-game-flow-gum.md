@@ -193,5 +193,5 @@ with the build.
 
 ## Next
 
-Chapter 10 adds sound: jump/land/dash effects and music, loaded through
-the content pipeline.
+Chapter 10 adds sound: jump/land/dash effects and music, loaded straight
+from `.wav` files — no content pipeline, the FNA-recommended path.

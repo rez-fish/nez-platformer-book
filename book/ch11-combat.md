@@ -147,7 +147,11 @@ Spawn the arrow at the archer's exact position. Fire.
   collider.
 - *Bigger hint:* every shot dies instantly — possibly *scoring* if a
   dummy overlaps the player (it doesn't, but notice the shape of the bug).
-- *Near-solution:* {% hint style="warning" %}
+- *Near-solution:* every shot dies instantly on your own collider — which is
+  why the spawn offset exists. Spawn points are collision hygiene, not
+  decoration.
+
+{% hint style="warning" %}
 **Spawn offsets are collision hygiene:** Arrows spawn slightly ahead of the shooter — a zero offset means the arrow's `Mover` collides with the archer on the first frame. Versus mode (Chapter 13) needs the same care with *two* archers.
 {% endhint %}
 

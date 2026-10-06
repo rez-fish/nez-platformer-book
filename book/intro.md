@@ -30,6 +30,8 @@ Full solutions live in `/solutions/chNN` in the repository — never in the chap
 - **Chapters 7–10:** tilemap arenas, camera and juice, title/pause flow with Gum UI, audio.
 - **Chapters 11–14:** arrows and scoring, enemy AI, local versus multiplayer, and shipping on Windows.
 
+One deliberate boundary: multiplayer is **local only** (shared screen, keyboard + gamepad). Online multiplayer is a different book — networking, rollback, and matchmaking would double the scope without serving the core promise, which is game feel and Nez fluency.
+
 ## Before you start
 
 You need a Windows machine, the .NET 8 SDK, and the FNA native libraries ("fnalibs"). Chapter 1 walks through all of it. The book pins exact dependency versions; check the chapter if yours differ.

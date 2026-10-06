@@ -38,11 +38,15 @@ switch; Exercise 6 compares.
 
 ### The FNA natives
 
-FNA is C#, but it talks to C libraries (SDL2 for windowing/input/audio,
+FNA is C#, but it talks to C libraries (SDL3 for windowing/input/audio,
 etc.). Those ship as **native DLLs that must sit next to your exe** —
-the `fnalibs` distribution (github.com/FNA-XNA/fnalibs). Miss one and the
-game dies on startup with a `DllNotFoundException` (Exercise 5). The
-exact set changes over time — check FNA's docs for the current inventory
+the `fnalibs` distribution (published as GitHub Actions artifacts on
+`FNA-XNA/fnalibs-dailies`; there is deliberately no NuGet package for
+FNA). Miss one and the game dies on startup with a `DllNotFoundException`
+(Exercise 5). The Windows x64 set is four DLLs from the archive's
+`win-x64` folder: `SDL3.dll`, `FNA3D.dll`, `FAudio.dll`,
+`libtheorafile.dll`. The exact set drifts over time — the dailies track
+FNA master, so re-download if yours are months old — but check FNA's docs
 rather than trusting any list, including this chapter's.
 
 ### The player README
@@ -112,15 +116,18 @@ kind to "Game", write the short description, add controls to the page.
 
 ### 5. Break it: missing native
 
-Delete `SDL2.dll` from a *copy* of the publish folder and run. Read the
+Delete `SDL3.dll` from a *copy* of the publish folder and run. Read the
 exception.
 
-- *Nudge:* `DllNotFoundException: Unable to load DLL 'SDL2'`.
-- *Bigger hint:* {% hint style="warning" %}
-**The #1 FNA shipping failure:** A missing native DLL (`DllNotFoundException`, often `SDL2`) is the #1 "it works on my machine" failure for FNA games — now you recognize it on sight.
-{% endhint %}
+- *Nudge:* `DllNotFoundException: Unable to load DLL 'SDL3'`.
+- *Bigger hint:* a missing native DLL is the #1 "it works on my machine"
+  failure for FNA games — now you recognize it on sight.
 - *Near-solution:* restore the DLL. Checklists beat memory: natives are
   a line on yours now.
+
+{% hint style="warning" %}
+**The #1 FNA shipping failure:** A missing native DLL (`DllNotFoundException`, often `SDL3`) is the #1 "it works on my machine" failure for FNA games — now you recognize it on sight.
+{% endhint %}
 
 ### 6. Compare publish modes
 
@@ -137,7 +144,7 @@ and startup behavior.
 Show the version somewhere players can see it — window title
 (`"Spirefall 0.1"`) or the title screen.
 
-- *Nudge:* `Assembly.GetName().Version` or a const.
+- *Nudge:* `Assembly.GetEntryAssembly()?.GetName().Version` or a const.
 - *Bigger hint:* the title screen already has Gum text — one more label.
 - *Near-solution:* version visibility turns "it crashed" reports into
   actionable bugs.
@@ -160,4 +167,4 @@ dash-refill sketch), a single-player campaign (Chapter 12's AI + Chapter
 13's GameMode exercise) — or a new game entirely. The patterns transfer:
 state machines, forgiveness timers, input abstraction, and scenes as
 states will serve every game you make. (Online multiplayer stays out of
-scope — that decision from Chapter 1 still stands.)
+scope — that boundary was set in the introduction, and it still stands.)

@@ -22,7 +22,6 @@ hittable), `ArenaScene.cs` (spawns, death/respawn), `Sfx.cs` + `death.wav`.
 ### AI as sense → think → act
 
 The enemy's `Update` is three labeled phases — a structure worth stealing
-
 for every AI you write:
 
 ![Enemy AI as sense-think-act: linecast, choose Patrol or Chase, move with the Mover.](assets/ai-pipeline.svg)
@@ -127,11 +126,9 @@ Replace the `seen` computation with `seen = dist < AggroRange`. Lure an
 enemy to the far side of a wall.
 
 - *Nudge:* it chases through the wall, hopping forever.
-{% hint style="info" %}
-**Fair AI:** The linecast is what makes the AI feel *fair* — it can only want what it can see. Sensing separates AI from homing missiles.
-{% endhint %}
-- *Near-solution:* revert. Sensing is what separates AI from homing
-  missiles.
+- *Bigger hint:* the linecast is what makes the AI feel *fair* — it can
+  only want what it can see. Sensing separates AI from homing missiles.
+- *Near-solution:* revert.
 
 ### 5. Stomp
 

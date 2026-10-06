@@ -157,8 +157,12 @@ def ai_pipeline():
 
 # ------------------------------------------------------- arena overview
 def arena_overview():
-    """Render the actual arena tilemap as an SVG (flat colors per tile)."""
-    tmx_path = os.path.join(REPO, "solutions", "ch14", "Content", "Arena", "arena.tmx")
+    """Render the actual arena tilemap as an SVG (flat colors per tile).
+
+    Uses the ch07 map: the figure is embedded in ch07, where the arena is
+    still 20x11 (it widens to 40x11 in ch08).
+    """
+    tmx_path = os.path.join(REPO, "solutions", "ch07", "Content", "Arena", "arena.tmx")
     rows = []
     with open(tmx_path) as f:
         txt = f.read()

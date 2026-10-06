@@ -29,10 +29,9 @@ Hand-placing platform entities works for a test room and collapses for a
 level: hundreds of entities, no visual overview, every tweak a recompile.
 A tilemap separates *authorship* (paint tiles in an editor) from *runtime*
 (Nez renders the layer and collides against it). The `.tmx` file is data;
-
 your code reads it. Level design becomes iteration, not programming.
 
-![The actual arena tilemap (40x11), rendered from the solution's arena.tmx.](assets/arena-overview.svg)
+![The actual arena tilemap (20x11), rendered from the chapter's arena.tmx.](assets/arena-overview.svg)
 
 ### Tiled's model
 
