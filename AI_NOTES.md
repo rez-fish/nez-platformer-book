@@ -120,6 +120,16 @@ at common sizes (16x16 tiles). Reza develops on Windows.
   ("Game-feel movement — the ground game"); ch05/ch06 were its continuation
   but never labeled part 2/3. Changed in ch04 file, SUMMARY.md. Per Reza's
   question — nothing was missing.
+- Visual polish pass 2026-10-06 (per Reza: "make the book site look visually
+  more appealing"): added `description` frontmatter to all 15 pages;
+  converted 16 key callouts to GitBook `{% hint %}` blocks (info/success/
+  warning/danger); generated figures in `book/assets/` via
+  `code/tools/make_figures.py` (loop, ec-hierarchy, axis-separation,
+  state-machine, ai-pipeline, arena-overview SVGs + cover.svg) and embedded
+  them in ch02/ch03/ch05/ch06/ch07/ch12 + intro hero; rewrote intro.md
+  (was a stale skeleton placeholder). All assets are text (SVG) so they
+  push via push_files. Theme colors/fonts/logo are GitBook UI settings,
+  not repo-controlled — checklist given to Reza.
 
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.

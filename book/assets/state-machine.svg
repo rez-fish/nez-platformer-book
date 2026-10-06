@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 210">
+<rect x="40" y="70" width="150" height="56" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="115" y="104" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="bold" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Normal</text>
+<rect x="370" y="70" width="150" height="56" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="445" y="104" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="bold" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Dashing</text>
+<line x1="190" y1="86" x2="366" y2="86" stroke="#e8a33d" stroke-width="2"/><polygon points="366,86 359,82 359,90" fill="#e8a33d"/>
+<text x="278" y="74" text-anchor="middle" font-size="12" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">press X, dash ready</text>
+<path d="M 370 110 L 190 110" stroke="#8a94a6" stroke-width="1.5"/>
+<polygon points="190,110 197,106 197,114" fill="#8a94a6"/>
+<text x="280" y="132" text-anchor="middle" font-size="12" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">timer expires</text>
+<text x="280" y="178" text-anchor="middle" font-size="13" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">one enum, one branch per state, transitions at the edges</text>
+</svg>

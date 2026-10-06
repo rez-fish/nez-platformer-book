@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+<rect x="110" y="20" width="180" height="44" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="200" y="48" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Initialize()</text>
+<rect x="110" y="100" width="180" height="44" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="200" y="128" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Update( dt )</text>
+<rect x="110" y="180" width="180" height="44" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="200" y="208" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Draw()</text>
+<line x1="200" y1="64" x2="200" y2="96" stroke="#8a94a6" stroke-width="1.5"/><polygon points="200,96 193,92 193,100" fill="#8a94a6"/>
+<line x1="200" y1="144" x2="200" y2="176" stroke="#8a94a6" stroke-width="1.5"/><polygon points="200,176 193,172 193,180" fill="#8a94a6"/>
+<path d="M 300 202 L 340 202 L 340 122 L 300 122" fill="none" stroke="#8a94a6" stroke-width="1.5"/>
+<polygon points="300,122 307,126 307,118" fill="#8a94a6"/>
+<text x="200" y="258" text-anchor="middle" font-size="13" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">simulate, then render — never mix</text>
+<text x="200" y="278" text-anchor="middle" font-size="13" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">every frame, until the window closes</text>
+</svg>

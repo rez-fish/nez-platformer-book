@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 170">
+<rect x="20" y="40" width="180" height="64" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="110" y="66" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="bold" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Sense</text>
+<text x="110" y="88" text-anchor="middle" font-size="12" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">linecast to player</text>
+<line x1="200" y1="72" x2="225" y2="72" stroke="#e8a33d" stroke-width="2"/><polygon points="225,72 218,68 218,76" fill="#e8a33d"/>
+<rect x="225" y="40" width="180" height="64" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="315" y="66" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="bold" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Think</text>
+<text x="315" y="88" text-anchor="middle" font-size="12" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">seen ? Chase : Patrol</text>
+<line x1="405" y1="72" x2="430" y2="72" stroke="#e8a33d" stroke-width="2"/><polygon points="430,72 423,68 423,76" fill="#e8a33d"/>
+<rect x="430" y="40" width="180" height="64" rx="8" fill="#243044" stroke="#3d5170" stroke-width="1.5"/>
+<text x="520" y="66" text-anchor="middle" font-size="16" fill="#ffffff" font-weight="bold" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">Act</text>
+<text x="520" y="88" text-anchor="middle" font-size="12" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">mover + hop</text>
+<text x="320" y="140" text-anchor="middle" font-size="13" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">the same shape as the player's state machine, driven by perception</text>
+</svg>

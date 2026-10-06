@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 250">
+<text x="140" y="24" text-anchor="middle" font-size="14" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">one diagonal move</text>
+<rect x="150" y="50" width="26" height="130" fill="#243044" stroke="#3d5170"/>
+<rect x="150" y="154" width="110" height="26" fill="#243044" stroke="#3d5170"/>
+<rect x="80" y="90" width="22" height="22" rx="3" fill="#e8a33d"/>
+<line x1="102" y1="101" x2="148" y2="152" stroke="#e05c5c" stroke-width="2" stroke-dasharray="6,4"/><polygon points="148,152 141,148 141,156" fill="#e05c5c"/>
+<text x="140" y="215" text-anchor="middle" font-size="14" fill="#e05c5c" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">✕  sticks on the corner</text>
+<text x="460" y="24" text-anchor="middle" font-size="14" fill="#8a94a6" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">X first, then Y</text>
+<rect x="470" y="50" width="26" height="130" fill="#243044" stroke="#3d5170"/>
+<rect x="470" y="154" width="110" height="26" fill="#243044" stroke="#3d5170"/>
+<rect x="400" y="90" width="22" height="22" rx="3" fill="#e8a33d"/>
+<line x1="422" y1="101" x2="466" y2="101" stroke="#e8a33d" stroke-width="2"/><polygon points="466,101 459,97 459,105" fill="#e8a33d"/>
+<line x1="464" y1="112" x2="464" y2="150" stroke="#e8a33d" stroke-width="2"/><polygon points="464,150 457,146 457,154" fill="#e8a33d"/>
+<text x="480" y="215" text-anchor="middle" font-size="14" fill="#58b368" font-weight="normal" font-family="ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace">✓  slides cleanly</text>
+</svg>
