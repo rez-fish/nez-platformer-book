@@ -136,7 +136,7 @@ Give the sprite entity the name `"archer"` (it has it — verify) and, in
 - *Bigger hint:* `var found = FindEntity("archer"); Debug.Log("found: {0}",
   found.Position);`
 - *Near-solution:* names are for humans and lookup; tags
-  (`Entity.Tag` + `FindEntitiesByTag`) are the bulk-query equivalent you'll
+  (`Entity.Tag` + `FindEntitiesWithTag`) are the bulk-query equivalent you'll
   use for arrows and enemies later.
 
 ### 4. Break it: the orphan entity

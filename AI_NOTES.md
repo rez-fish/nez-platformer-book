@@ -143,6 +143,16 @@ at common sizes (16x16 tiles). Reza develops on Windows.
   on Reza's Windows machine is still the highest-value next step; see the
   review's tweak list for structural candidates (coroutines chapter, sprite
   animation, VirtualInput earlier, save/settings, coding-practices essay).
+- Nez API Reference 2026-10-06 (per Reza: "there isn't a good place to look
+  at the docs"): new `book/reference/` section with 7 pages (overview, core,
+  physics, rendering, input, utils, ai). Every signature extracted from Nez
+  source @ 3f8cc40 via `extract_api.py` (kept in /tmp/nezref — not in repo);
+  popularity tiers (★★★/★★/★) counted empirically across 49 Nez-Samples
+  files + 100 book solution files. Also fixed a real book bug found during
+  extraction: ch03 said `FindEntitiesByTag`, the source has
+  `FindEntitiesWithTag`. Extraction script regex-mangles some generic
+  signatures — member *names* verified, complex generic signatures should be
+  confirmed against source before trusting.
 
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.

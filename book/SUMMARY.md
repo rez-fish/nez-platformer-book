@@ -16,4 +16,14 @@
 - [Chapter 13: Local multiplayer — versus](ch13-versus.md)
 - [Chapter 14: Ship it — publishing for Windows](ch14-shipping.md)
 
+## Nez API Reference
+
+- [Reference overview](reference/overview.md)
+- [Core: game, scene, entity, component](reference/core.md)
+- [Physics: movers, colliders, queries](reference/physics.md)
+- [Rendering: sprites, camera, tilemaps](reference/rendering.md)
+- [Input: polling and virtual input](reference/input.md)
+- [Utilities: coroutines, tweens, timers](reference/utils.md)
+- [AI: state machines](reference/ai.md)
+
 <!-- Chapters are added below as they are written. One entry per chapter file. -->
