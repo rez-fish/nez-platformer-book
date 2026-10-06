@@ -1,5 +1,5 @@
 ---
-description: Arrows, target dummies, scoring, and the HUD — the combat loop.
+description: "Arrows, target dummies, scoring, and the HUD — the combat loop."
 ---
 
 # Chapter 11: Combat — arrows, targets, score

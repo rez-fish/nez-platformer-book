@@ -1,5 +1,5 @@
 ---
-description: Patrol and chase enemy AI with line-of-sight, plus death and respawn.
+description: "Patrol and chase enemy AI with line-of-sight, plus death and respawn."
 ---
 
 # Chapter 12: Enemies — AI with state machines and line of sight

@@ -1,5 +1,5 @@
 ---
-description: One arena platformer, built incrementally with Nez on FNA — a project-based book for experienced engineers new to C# and game dev.
+description: "One arena platformer, built incrementally with Nez on FNA — a project-based book for experienced engineers new to C# and game dev."
 ---
 
 ![Spirefall — a project-based book: one arena platformer built incrementally with Nez on FNA.](assets/cover.svg)

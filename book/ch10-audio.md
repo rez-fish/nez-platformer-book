@@ -1,5 +1,5 @@
 ---
-description: Sound effects without a content pipeline, plus music.
+description: "Sound effects without a content pipeline, plus music."
 ---
 
 # Chapter 10: Sound — effects and music

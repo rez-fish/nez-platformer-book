@@ -1,5 +1,5 @@
 ---
-description: Title, pause, and scene flow, plus UI with Gum's FNA runtime.
+description: "Title, pause, and scene flow, plus UI with Gum's FNA runtime."
 ---
 
 # Chapter 9: Game flow and UI with Gum

@@ -1,5 +1,5 @@
 ---
-description: Publish for Windows, package the FNA natives, write the player README, ship it.
+description: "Publish for Windows, package the FNA natives, write the player README, ship it."
 ---
 
 # Chapter 14: Ship it — publishing for Windows

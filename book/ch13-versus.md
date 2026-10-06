@@ -1,5 +1,5 @@
 ---
-description: Local versus: keyboard vs gamepad, owned arrows, first to 5 wins.
+description: "Local versus: keyboard vs gamepad, owned arrows, first to 5 wins."
 ---
 
 # Chapter 13: Local multiplayer — versus

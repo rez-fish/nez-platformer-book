@@ -1,5 +1,5 @@
 ---
-description: A following camera with lookahead, trauma-based screenshake, and dust particles.
+description: "A following camera with lookahead, trauma-based screenshake, and dust particles."
 ---
 
 # Chapter 8: Juice — camera, screenshake, particles
