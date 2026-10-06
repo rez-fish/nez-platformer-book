@@ -4,7 +4,7 @@
 - [Chapter 1: Toolchain and first window](ch01-toolchain.md)
 - [Chapter 2: C#, the game loop, and a moving square](ch02-loop.md)
 - [Chapter 3: Scene, Entity, Component, and pixel-perfect rendering](ch03-scene-entity-component.md)
-- [Chapter 4: Game-feel movement, part 1 — the ground game](ch04-ground-movement.md)
+- [Chapter 4: Game-feel movement — the ground game](ch04-ground-movement.md)
 - [Chapter 5: Collisions — colliders, the Mover, and the spatial hash](ch05-collisions.md)
 - [Chapter 6: The full moveset — wall slide, wall jump, dash](ch06-advanced-movement.md)
 - [Chapter 7: Real levels — tilemaps with Tiled](ch07-tilemaps.md)

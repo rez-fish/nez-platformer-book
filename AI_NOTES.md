@@ -116,6 +116,11 @@ at common sizes (16x16 tiles). Reza develops on Windows.
 
 ## Known issues / unverified / TODOs
 
+- Retroactive fix 2026-10-06: ch04 title dropped the dangling "part 1"
+  ("Game-feel movement — the ground game"); ch05/ch06 were its continuation
+  but never labeled part 2/3. Changed in ch04 file, SUMMARY.md. Per Reza's
+  question — nothing was missing.
+
 - No .NET SDK on this machine: nothing compiled. ALL chapters' snippets and
   solutions are [unverified]; Reza reports build failures as chapter bugs.
 - Gum element layout/positioning/centering marked [unverified] in ch09/11/13;

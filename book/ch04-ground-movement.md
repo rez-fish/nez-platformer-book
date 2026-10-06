@@ -1,4 +1,4 @@
-# Chapter 4: Game-feel movement, part 1 — the ground game
+# Chapter 4: Game-feel movement — the ground game
 
 > Build status: **[unverified]** — written against Nez @ `3f8cc40`, not compiled.
 
